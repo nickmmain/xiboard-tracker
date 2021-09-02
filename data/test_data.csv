@@ -1,0 +1,73 @@
+Ticket #,Tracker,Status,Serial Number,SW Version,Board Config,Assignee
+100,DUT,Testing: Inspection,DUT-1001,v1.0,Eng. Model (EM),Boba Fett
+101,DUT,Testing: HW Tests,DUT-1002,v1.0,Eng. Model (EM),Darth Vader
+102,DUT,Testing: Automated Functional,DUT-1003,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+103,DUT,Testing: Thermal Tests,DUT-1004,v1.0,Flight Model (FM),Boba Fett
+104,DUT,In Inventory,DUT-1005,v1.0,Lab Unit,Darth Vader
+105,DUT,New,DUT-1006,v1.0,Flight Model (FM),Obi-Wan Kenobi
+106,DUT,In Inventory,DUT-1007,v1.0,Lab Unit,Darth Vader
+107,DUT,In Inventory,DUT-1008,v1.0,Flight Model (FM),Obi-Wan Kenobi
+108,DUT,New,DUT-1009,v1.0,Flight Model (FM),Obi-Wan Kenobi
+109,DUT,New,DUT-1010,v1.0,Flight Model (FM),Obi-Wan Kenobi
+110,DUT,Testing: HW Tests,DUT-1011,v1.0,Flight Model (FM),Darth Vader
+111,DUT,Testing: HW Tests,DUT-1012,v1.2,Flight Model (FM),Darth Vader
+112,DUT,Testing: Automated Functional,DUT-1013,v1.2,Flight Model (FM),Darth Vader
+113,DUT,Testing: Automated Functional,DUT-1014,v1.2,Flight Model (FM),Darth Vader
+114,DUT,Testing: Automated Functional,DUT-1015,v1.2,Eng. Model (EM),Darth Vader
+115,DUT,Testing: Thermal Tests,DUT-1016,v1.2,Eng. Model (EM),Darth Vader
+116,DUT,Testing: Thermal Tests,DUT-1017,v1.2,Eng. Model (EM),Darth Vader
+117,DUT,Testing: Thermal Tests,DUT-1018,v1.2,Eng. Model (EM),Darth Vader
+118,DUT,Testing: Thermal Tests,DUT-1019,v1.2,Eng. Model (EM),Darth Vader
+119,DUT,In Inventory,DUT-1020,v1.2,Eng. Model (EM),Darth Vader
+120,DUT,In Inventory,DUT-1021,v1.2,Eng. Model (EM),Boba Fett
+121,DUT,New,DUT-1022,v1.1,Eng. Model (EM),Boba Fett
+122,DUT,New,DUT-1023,v1.1,Eng. Model (EM),Boba Fett
+123,DUT,New,DUT-1024,v1.1,Eng. Model (EM),Boba Fett
+124,DUT,New,DUT-1025,v1.1,Eng. Model (EM),Boba Fett
+125,DUT,New,DUT-1026,v1.1,Eng. Model (EM),Boba Fett
+126,DUT,New,DUT-1027,v1.1,Eng. Model (EM),Boba Fett
+127,DUT,New,DUT-1028,v1.1,Eng. Model (EM),Boba Fett
+128,DUT-Daughterboard,In Inventory,DUT-DB-2001,v1.0,Flight Model (FM),Han Solo
+129,DUT-Daughterboard,In Inventory,DUT-DB-2002,v1.0,Lab Unit,Han Solo
+130,DUT-Daughterboard,In Inventory,DUT-DB-2003,v1.0,Flight Model (FM),Han Solo
+131,DUT-Daughterboard,In Inventory,DUT-DB-2004,v1.2,Lab Unit,Han Solo
+132,DUT-Daughterboard,In Inventory,DUT-DB-2005,v1.2,Flight Model (FM),Han Solo
+133,DUT-Daughterboard,In Inventory,DUT-DB-2006,v1.2,Flight Model (FM),Han Solo
+134,DUT-Daughterboard,In Inventory,DUT-DB-2007,v1.2,Flight Model (FM),Han Solo
+135,DUT-Daughterboard,In Inventory,DUT-DB-2008,v1.2,Flight Model (FM),Han Solo
+136,DUT-Daughterboard,Testing: Inspection,DUT-DB-2009,v1.2,Flight Model (FM),Han Solo
+137,DUT-Daughterboard,Testing: Inspection,DUT-DB-2010,v1.2,Flight Model (FM),Han Solo
+138,DUT-Daughterboard,Testing: Inspection,DUT-DB-2011,v1.2,Flight Model (FM),Han Solo
+139,DUT-Daughterboard,Testing: Inspection,DUT-DB-2012,v1.3,Flight Model (FM),Boba Fett
+140,DUT-Daughterboard,Testing: Inspection,DUT-DB-2013,v1.3,Flight Model (FM),Boba Fett
+141,DUT-Daughterboard,Testing: Inspection,DUT-DB-2014,v1.3,Flight Model (FM),Boba Fett
+142,DUT-Daughterboard,Testing: Inspection,DUT-DB-2015,v1.3,Flight Model (FM),Boba Fett
+143,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2016,v1.3,Flight Model (FM),Boba Fett
+144,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2017,v1.3,Flight Model (FM),Boba Fett
+145,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2018,v1.3,Flight Model (FM),Boba Fett
+146,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2019,v1.3,Flight Model (FM),Boba Fett
+147,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2020,v1.3,Flight Model (FM),Darth Vader
+148,DUT-Daughterboard,Testing: HW Tests,DUT-DB-2021,v1.3,Flight Model (FM),Darth Vader
+149,DUT-Daughterboard,Testing: Automated Functional,DUT-DB-2022,v1.0,Flight Model (FM),Darth Vader
+150,DUT-Daughterboard,Testing: Automated Functional,DUT-DB-2023,v1.0,Flight Model (FM),Darth Vader
+151,DUT-Daughterboard,New,DUT-DB-2024,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+152,DUT-Daughterboard,New,DUT-DB-2025,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+153,DUT-Daughterboard,New,DUT-DB-2026,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+154,DUT-Daughterboard,New,DUT-DB-2027,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+155,DUT-Daughterboard,New,DUT-DB-2028,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+156,DUT-Daughterboard,New,DUT-DB-2029,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+157,DUT-Daughterboard,New,DUT-DB-2030,v1.0,Eng. Model (EM),Obi-Wan Kenobi
+158,DUT-Daughterboard,New,DUT-DB-2031,v1.0,Flight Model (FM),Obi-Wan Kenobi
+159,DUT-Daughterboard,New,DUT-DB-2032,v1.3,Flight Model (FM),Obi-Wan Kenobi
+160,DUT-Daughterboard,New,DUT-DB-2033,v1.3,Flight Model (FM),Darth Vader
+161,DUT-Daughterboard,New,DUT-DB-2034,v1.3,Flight Model (FM),Darth Vader
+162,DUT-Daughterboard,New,DUT-DB-2035,v1.3,Flight Model (FM),Darth Vader
+163,DUT-Daughterboard,New,DUT-DB-2036,v1.3,Flight Model (FM),Darth Vader
+164,DUT-Daughterboard,New,DUT-DB-2037,v1.3,Eng. Model (EM),Darth Vader
+165,DUT-Daughterboard,New,DUT-DB-2038,v1.3,Eng. Model (EM),Darth Vader
+166,DUT-Daughterboard,New,DUT-DB-2039,v1.3,Eng. Model (EM),Darth Vader
+167,DUT-Daughterboard,New,DUT-DB-2040,v1.5,Eng. Model (EM),Darth Vader
+168,DUT-Daughterboard,New,DUT-DB-2041,v1.5,Eng. Model (EM),Darth Vader
+169,DUT-Daughterboard,New,DUT-DB-2042,v1.5,Eng. Model (EM),Han Solo
+170,DUT-Daughterboard,New,DUT-DB-2043,v1.5,Eng. Model (EM),Han Solo
+171,DUT-Daughterboard,New,DUT-DB-2044,v1.5,Eng. Model (EM),Han Solo
