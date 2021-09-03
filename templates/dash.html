@@ -1,0 +1,17 @@
+<html>
+<script type="text/javascript" src="/static/jquery.js"></script>
+
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tracking_dash.css') }}">
+    <title>Xiphos DUT & DUT-DB Testing Dashboard</title>
+</head>
+
+<body>
+    <div style="display:flex">
+        {% for state in states %}
+            {% include "state.html" %}
+        {% endfor %}
+    </div>
+</body>
+
+</html>
