@@ -1,6 +1,8 @@
-<li class="card" style="background-color: lightblue">
-    <a class="pull-right"><i class="glyphicon glyphicon-remove"></i></a>
-    <span style="margin-right:10px;" class="pull-right"><i class="glyphicon glyphicon-list-alt"></i></span>
-    <a class="pull-right" title="Archive"><i class="glyphicon glyphicon-folder-close"></i></a>
-    <a><span>{{data['Ticket #']}}</span></a>
+<li class="card">
+    <p class="ticket">Ticket: {{data['Ticket #']}}</p>
+    <span class="glyphicon glyphicon-barcode ticket-icon"></span><span>{{data['Serial Number']}}</span>
+    <div>
+        <span class="glyphicon glyphicon-cog ticket-icon"></span><span>{{data['Board Config']}}</span>
+    </div>
+    <p>Version: {{data['SW Version']}}</p>
 </li>

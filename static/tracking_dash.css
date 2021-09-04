@@ -1,14 +1,38 @@
-.columnHeader { 
+.column{
+    background-color: grey
+}
+
+.column-header { 
     margin: 10px 0px;
     padding: 0px 3px;
     font-size: 15px;
     color: #777;
 }
 
+.column-title{
+    color:white;
+    font-weight:bold
+}
+
 ul.no-bullets {
     list-style-type: none;
     padding: 4;
     margin: 0;
+}
+
+p.ticket{
+    text-decoration: underline;
+}
+
+.ticket-icon{
+    margin-right: 6px;
+}
+
+li.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: left;
+    background-color: #0548a0;
+    padding-left: 6px;
 }
 
 @font-face {
