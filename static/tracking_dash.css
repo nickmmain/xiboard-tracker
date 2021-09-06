@@ -1,5 +1,7 @@
 .column{
-    background-color: grey
+    background-color: grey;
+    display: inline-block; 
+    margin: 10px;
 }
 
 .column-header { 

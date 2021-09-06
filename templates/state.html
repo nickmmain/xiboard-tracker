@@ -1,19 +1,18 @@
-<div id="columns">
-    <div style="display: inline-block; margin: 10px;">
-        <div class="column">
-          <div class="column-header">
-              <span class="column-title">{{state}}</span>
-          </div>
-          <ul class="no-bullets">
-            {% for data in test_data %}
-                {% if data['Status']==state %}
-                    {% include "ticket.html" %}
-                {% endif %}
-            {% endfor %}
-          </ul>
-      </div>
+<div>
+    <div id={{state.replace(" ", "_")}} class="column" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)" ondragleave="dragleaveHandler(event)" ondragend="dragendHandler(event)">
+        <div class="column-header">
+            <span class="column-title">{{state}}</span>
+        </div>
+        <ul class="no-bullets">
+        {% for data in test_data %}
+            {% if data['Status']==state %}
+                {% include "ticket.html" %}
+            {% endif %}
+        {% endfor %}
+        </ul>
     </div>
-</div>    
+</div>
+
     
     
 

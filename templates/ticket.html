@@ -1,4 +1,4 @@
-<li class="card">
+<li class="card" draggable="true" ondragstart="dragstartHandler(event, {{data|tojson|forceescape}})">
     <p class="ticket">Ticket: {{data['Ticket #']}}</p>
     <span class="glyphicon glyphicon-barcode ticket-icon"></span><span>{{data['Serial Number']}}</span>
     <div>
