@@ -1,7 +1,7 @@
 var startColumn = '';
 
 var dragstartHandler = function(event, data){
-    event.dataTransfer.setData("text/plain", data);
+    event.dataTransfer.setData("text/plain", JSON.stringify(data));
     event.dataTransfer.effectAllowed = "move";
     startColumn = data.Status;
 };
@@ -36,9 +36,24 @@ var dropHandler = function(event){
     event.preventDefault();
     if(event.target.classList.contains('column'))
     {
-        if((event.target.id.replace("_", " "))!=startColumn)
+        var targetColumn = event.target.id.replaceAll("_", " ");
+
+        if(targetColumn!=startColumn)
         {
-            console.log('moved an item');
+            var ticket = JSON.parse(event.dataTransfer.getData("text/plain"));
+            var moveticketpayload = {ticketId:ticket['Ticket #'], targetColumn:targetColumn};
+
+            $.ajax({
+                type : "PUT",
+                url : '/data',
+                dataType: "json",
+                data: JSON.stringify(moveticketpayload),
+                contentType: 'application/json;charset=UTF-8',
+                success: function () {
+                    console.log('Status updated');
+                    location.reload(true);
+                }
+            });
         }
     }
 };

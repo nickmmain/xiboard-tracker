@@ -1,6 +1,7 @@
 import os
-from flask import Flask, app, render_template, url_for
-from test_data import get_all
+import json
+from flask import Flask, app, render_template, url_for, request
+from test_data import get_all, move_ticket
 from glob import glob
 
 
@@ -15,7 +16,17 @@ def welcome():
     return render_template('dash.html', states=_STATES, test_data=test_data)
 
 
-@app.context_processor
+@app.route('/data', methods=['PUT', 'POST'])
+def test_data():
+    if(request.method == 'PUT'):
+        payload = request.json
+        move_ticket(payload['ticketId'], payload['targetColumn'])
+        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    if(request.method == 'POST'):
+        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+
+
+@ app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
 
