@@ -1,19 +1,26 @@
 import os
 import json
 from flask import Flask, app, render_template, url_for, request
-from test_data import get_all, move_ticket
+from test_data import initialize_states, initialize_versions, initialize_configs, initialize_trackers, get_all, move_ticket
 from glob import glob
 
 
 app = Flask(__name__)
-_STATES = ['New', 'Testing: Inspection', 'Testing: HW Tests',
-           'Testing: Automated Functional', 'Testing: Thermal Tests', 'In Inventory']
+_STATES = []
+_VERSIONS = []
+_CONFIGS = []
+_TRACKERS = []
 
 
 @app.route('/')
 def welcome():
+    _STATES = initialize_states()
+    _VERSIONS = initialize_versions()
+    _CONFIGS = initialize_configs()
+    _TRACKERS = initialize_trackers()
+
     test_data = get_all()
-    return render_template('dash.html', states=_STATES, test_data=test_data)
+    return render_template('dash.html', test_data=test_data, states=_STATES, versions=_VERSIONS, configs=_CONFIGS, trackers=_TRACKERS)
 
 
 @app.route('/data', methods=['PUT', 'POST'])

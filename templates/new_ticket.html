@@ -1,0 +1,27 @@
+<h1>New item</h1>
+    <form>
+
+        <label for="fname">Assignee:</label>
+        <input type="text" id="assignee" name="assignee"><br><br>
+
+        <label for="version">Software Version:</label>
+        <select name="version" id="version">
+            {% for version in versions %}
+                <option value="{{version}}">{{version}}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="board">Board type</label>
+        <select name="board" id="board">
+            {% for tracker in trackers %}
+                <option value="{{tracker}}">{{tracker}}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="config">Board config</label>
+        <select name="config" id="config">
+            {% for config in configs %}
+                <option value="{{config}}">{{config}}</option>
+            {% endfor %}
+        </select><br><br>
+    </form>

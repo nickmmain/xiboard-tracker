@@ -8,6 +8,33 @@ _FIELDS = ['Ticket #', 'Tracker', 'Status', 'Serial Number',
            'SW Version', 'Board Config', 'Assignee']
 
 
+def initialize_trackers():
+    return read_column_values(_FIELDS[1])
+
+
+def initialize_states():
+    return read_column_values(_FIELDS[2])
+
+
+def initialize_versions():
+    return read_column_values(_FIELDS[4])
+
+
+def initialize_configs():
+    return read_column_values(_FIELDS[5])
+
+
+def read_column_values(columnTitle):
+    columnValues = set()
+    with open(_DATA_PATH, 'r') as csvfile:
+        reader = csv.DictReader(csvfile, _FIELDS)
+        # skipping the first row(headers):
+        next(reader)
+        for row in reader:
+            columnValues.add(row[columnTitle])
+    return columnValues
+
+
 def get_all():
     with open(_DATA_PATH, newline='') as csvfile:
         return list(csv.DictReader(csvfile))
