@@ -3,9 +3,9 @@ Ticket #,Tracker,Status,Serial Number,SW Version,Board Config,Assignee
 101,DUT,Testing: Automated Functional,DUT-1002,v1.0,Eng. Model (EM),Darth Vader
 102,DUT,Testing: HW Tests,DUT-1003,v1.0,Eng. Model (EM),Obi-Wan Kenobi
 103,DUT,Testing: Automated Functional,DUT-1004,v1.0,Flight Model (FM),Boba Fett
-104,DUT,In Inventory,DUT-1005,v1.0,Lab Unit,Darth Vader
-105,DUT,In Inventory,DUT-1006,v1.0,Flight Model (FM),Obi-Wan Kenobi
-106,DUT,In Inventory,DUT-1007,v1.0,Lab Unit,Darth Vader
+104,DUT,Testing: Thermal Tests,DUT-1005,v1.0,Lab Unit,Darth Vader
+105,DUT,Testing: Thermal Tests,DUT-1006,v1.0,Flight Model (FM),Obi-Wan Kenobi
+106,DUT,Testing: Thermal Tests,DUT-1007,v1.0,Lab Unit,Darth Vader
 107,DUT,In Inventory,DUT-1008,v1.0,Flight Model (FM),Obi-Wan Kenobi
 108,DUT,New,DUT-1009,v1.0,Flight Model (FM),Obi-Wan Kenobi
 109,DUT,New,DUT-1010,v1.0,Flight Model (FM),Obi-Wan Kenobi
@@ -71,3 +71,6 @@ Ticket #,Tracker,Status,Serial Number,SW Version,Board Config,Assignee
 169,DUT-Daughterboard,New,DUT-DB-2042,v1.5,Eng. Model (EM),Han Solo
 170,DUT-Daughterboard,New,DUT-DB-2043,v1.5,Eng. Model (EM),Han Solo
 171,DUT-Daughterboard,New,DUT-DB-2044,v1.5,Eng. Model (EM),Han Solo
+172,DUT-Daughterboard,New,123,v1.3,Lab Unit,Nick
+173,DUT,New,123,v1.5,Eng. Model (EM),Nick
+174,DUT-Daughterboard,New,1234,v1.3,Flight Model (FM),Nick

@@ -1,26 +1,24 @@
 import os
 import json
-from flask import Flask, app, render_template, url_for, request
-from test_data import initialize_states, initialize_versions, initialize_configs, initialize_trackers, get_all, move_ticket
+from flask import Flask, app, render_template, url_for, request, redirect
+from test_data import initialize_versions, initialize_configs, initialize_trackers, get_all, move_ticket, new_ticket
 from glob import glob
 
 
 app = Flask(__name__)
-_STATES = []
-_VERSIONS = []
-_CONFIGS = []
-_TRACKERS = []
+_STATES = ['New', 'Testing: Inspection', 'Testing: HW Tests',
+           'Testing: Automated Functional', 'Testing: Thermal Tests', 'In Inventory']
+_SUBMISSION_ERROR = ''
 
 
 @app.route('/')
 def welcome():
-    _STATES = initialize_states()
     _VERSIONS = initialize_versions()
     _CONFIGS = initialize_configs()
     _TRACKERS = initialize_trackers()
 
     test_data = get_all()
-    return render_template('dash.html', test_data=test_data, states=_STATES, versions=_VERSIONS, configs=_CONFIGS, trackers=_TRACKERS)
+    return render_template('dash.html', test_data=test_data, states=_STATES, versions=_VERSIONS, configs=_CONFIGS, trackers=_TRACKERS, sub_error=_SUBMISSION_ERROR)
 
 
 @app.route('/data', methods=['PUT', 'POST'])
@@ -30,7 +28,14 @@ def test_data():
         move_ticket(payload['ticketId'], payload['targetColumn'])
         return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
     if(request.method == 'POST'):
-        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+        try:
+            new_ticket(request.form['assignee'], request.form['serial'],
+                       request.form['version'], request.form['board'], request.form['config'])
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+        except ValueError as error:
+            global _SUBMISSION_ERROR
+            _SUBMISSION_ERROR = error.args[0]
+            return redirect(url_for('welcome'))
 
 
 @ app.context_processor

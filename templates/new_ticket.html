@@ -1,8 +1,10 @@
 <h1>New item</h1>
-    <form>
+    <form action="{{ url_for('test_data') }}" role="form" method="post">
 
-        <label for="fname">Assignee:</label>
+        <label for="assignee">Assignee:</label>
         <input type="text" id="assignee" name="assignee"><br><br>
+        <label for="serial">Serial No.</label>
+        <input type="text" id="serial" name="serial"><br><br>
 
         <label for="version">Software Version:</label>
         <select name="version" id="version">
@@ -24,4 +26,9 @@
                 <option value="{{config}}">{{config}}</option>
             {% endfor %}
         </select><br><br>
+
+        <input type="submit" value="submit">
+        {% if sub_error %}
+            <b style="color:red">Error: {{sub_error}}</b>
+        {% endif %}
     </form>
