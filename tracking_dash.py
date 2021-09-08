@@ -1,8 +1,8 @@
 import os
 import json
 from flask import Flask, app, render_template, url_for, request, redirect
-from test_data import initialize_versions, initialize_configs, initialize_trackers, get_all_test_data, move_ticket, new_ticket
-from customer_data import get_all_customer_data
+from test_data import initialize_versions, initialize_configs, initialize_trackers, get_all_test_data, move_ticket, new_ticket, get_inventory, remove_ticket_by_serial
+from customer_data import get_all_customer_data, assign_boards
 from glob import glob
 
 
@@ -43,6 +43,39 @@ def test_data():
             return redirect(url_for('welcome'))
         clear_error()
         return redirect(url_for('welcome'))
+
+
+@app.route('/orders', methods=['POST'])
+def assign_inventory():
+    orders = get_all_customer_data()
+    for order in orders:
+        if(not(order['DUT SN'] or order['DUT-DB SN'])):
+            inventory = get_inventory()
+            if(',' in order['Desired Units']):
+                dut = next(
+                    (x for x in inventory if x['Tracker'] == 'DUT' and order['Unit Config'] in x['Board Config']), None)
+                dut_db = next(
+                    (x for x in inventory if x['Tracker'] == 'DUT-Daughterboard' and order['Unit Config'] in x['Board Config']), None)
+                if(dut is not None and dut_db is not None):
+                    assign_boards(
+                        order['Assembly #'], dut['Serial Number'], dut_db['Serial Number'])
+                    remove_ticket_by_serial(dut['Serial Number'])
+                    remove_ticket_by_serial(dut_db['Serial Number'])
+            elif('DUT-DB' in order['Desired Units']):
+                dut_db = next(
+                    (x for x in inventory if x['Tracker'] == 'DUT-Daughterboard' and order['Unit Config'] in x['Board Config']), None)
+                if(dut_db is not None):
+                    assign_boards(
+                        order['Assembly #'], None,  dut_db['Serial Number'])
+                    remove_ticket_by_serial(dut_db['Serial Number'])
+            else:
+                dut = next(
+                    (x for x in inventory if x['Tracker'] == 'DUT' and order['Unit Config'] in x['Board Config']), None)
+                if(dut is not None):
+                    assign_boards(
+                        order['Assembly #'], dut,  None)
+                    remove_ticket_by_serial(dut['Serial Number'])
+    return redirect(url_for('welcome'))
 
 
 @ app.context_processor

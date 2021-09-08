@@ -43,6 +43,15 @@ def get_all_test_data():
         return list(csv.DictReader(csvfile))
 
 
+def get_inventory():
+    inventory = []
+    with open(_DATA_PATH, newline='') as csvfile:
+        for row in list(csv.DictReader(csvfile)):
+            if (row[_STATUS]) == 'In Inventory':
+                inventory.append(row)
+    return inventory
+
+
 def new_ticket(assignee, serial, version, tracker, config):
     if(not assignee):
         raise ValueError('Empty assignee.')
@@ -69,6 +78,21 @@ def move_ticket(ticket_number, destination_column):
                     t=ticket_number, col=destination_column))
                 row[_STATUS] = destination_column
             writer.writerow(row)
+    shutil.move(tempfile.name, _DATA_PATH)
+
+
+def remove_ticket_by_serial(serial_number):
+    tempfile = NamedTemporaryFile(mode='w', delete=False, newline='')
+
+    with open(_DATA_PATH, 'r') as csvfile, tempfile:
+        reader = csv.DictReader(csvfile, _FIELDS)
+        writer = csv.DictWriter(tempfile, _FIELDS)
+        for row in reader:
+            if row[_SERIAL] != serial_number:
+                writer.writerow(row)
+            else:
+                print('Found board with serial: {serial}, removing.'.format(
+                    serial=serial_number))
     shutil.move(tempfile.name, _DATA_PATH)
 
 

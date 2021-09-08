@@ -1,4 +1,7 @@
-<h1>Customer orders</h1>
+<h1 style="display: inline-block;">Customer orders</h1>
+<form method="post" action="/orders">
+    <input type="submit" value="Assign Inventory" name="assign"/>
+</form>
 <table>
     <tr>
     {% for header in customer_headers %}
@@ -8,7 +11,11 @@
     {% for data in customer_data %}
     <tr>
         {% for header in customer_headers %}
-            <td class="colspace">{{data[header]}}</td>
+            {% if 'DUT' in header and data[header]!='' %}
+                <td class="colspace" style="color:limegreen">{{data[header]}}</td>
+            {% else %}
+                <td class="colspace">{{data[header]}}</td>
+            {% endif %}
         {% endfor %}
     </tr>
     {% endfor %}

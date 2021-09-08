@@ -1,4 +1,4 @@
-# xiboard tracker
+# Xiboard tracker
 
 A web page for tracking the testing state of Xiphos products and assigning them to customer orders.
 
@@ -30,6 +30,14 @@ The values in the drop downs are the set of existing values found in the excel s
 
 ### STEP 4: Associate units in inventory to customers orders
 
-###### funny sidenote
+By clicking "Assign Inventory", order columns "DUT" and "DUT-DB" will be assigned serial numbers from boards "In Inventory". Priority was given by delivery date.
+
+The first entries of customer_data.csv were "delivered", and not present in "In Inventory" so when "Assign Inventory" is clicked, the boards are likewise removed from the "In Inventory" column.
+
+Orders which require both DUT and DUT-DB are not partially fulfilled until both are "In Inventory". To make sure these double-board orders get filled, single-board orders are not processed unless the two orders have the same delivery date.
+
+No special considerations were made to favor "In Progress" assemblies, as there were no directions to do so in the challenge.
+
+###### sidenote
 
 For some reason Chrome thinks the application is in Danish, and may offer to translate it for you. Nej tak. vi ses på Fastelavn.
