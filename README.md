@@ -6,9 +6,10 @@ A web page for tracking the testing state of Xiphos products and assigning them 
 
 1. Download the folder
 2. Navigate to the directory of the folder using the command line
-3. Type and enter: "set FLASK_APP=tracking_dash"
-4. Type and enter: "flask run"
-5. Navigate to 127.0.0.0:5000 using Chrome or a browser of your choosing.
+3. Install requirements for the project. Type and enter: pip install -r ./requirements.txt
+4. Type and enter: "set FLASK_APP=tracking_dash"
+5. Type and enter: "flask run"
+6. Navigate to 127.0.0.0:5000 using Chrome or a browser of your choosing.
 
 Below I detail how I fulfilled the criteria of each step of the challenge. I also list "To do" items for each, which are the next steps I would take in each feature, given the time.
 
