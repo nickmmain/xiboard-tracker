@@ -2,6 +2,14 @@
 
 A web page for tracking the testing state of Xiphos products and assigning them to customer orders.
 
+### Running the application
+
+1. Download the file
+2. Navigate to the directory of the folder using the command line
+3. Type and enter: "set FLASK_APP=tracking_dash"
+4. Type and enter: "flask run"
+5. Navigate to 127.0.0.0:5000 using Chrome or a browser of your choosing.
+
 Below I detail how I fulfilled the criteria of each step of the challenge. I also list "To do" items for each, which are the next steps I would take in each feature, given the time.
 
 ### STEP 1: Display sample data
@@ -9,7 +17,7 @@ Below I detail how I fulfilled the criteria of each step of the challenge. I als
 The display for test_data.csv was chosen in the style of a Kanban board. On each ticket I chose to display what I felt was the most relevant information.
 To do: each ticket should be clickable, to take you to a page with more details.
 
-I chose to display the customer_data.csv simply as the table it came in, by default ordered by date.
+I chose to display the customer_data.csv simply, ordered by date.
 To do: Being able to order the table by status, or any other field.
 
 ### STEP 2: Edit data between states
@@ -24,7 +32,7 @@ No assumptions were made about the format (e.g. DUT-XXXX) of device serial numbe
 
 Neither Assignee name nor serial number text fields may be empty.
 
-As for the drop-down menus, these enable me to restrict the user to only certain values without having to do validation (though in reality a production version of this app should validate those fields as anyone may pass values via Curl/postman/etc.).
+As for the drop-down menus, these enable me to restrict the user to only certain values without having to do validation (though in reality a production server should validate those fields as anyone may pass values via Curl/postman/etc.).
 
 The values in the drop downs are the set of existing values found in the excel sheet. Therefore, to add `v3.0` to the drop down, one would add the first board with that version to test_data.csv and it would henceforth be available.
 
@@ -34,9 +42,13 @@ By clicking "Assign Inventory", order columns "DUT" and "DUT-DB" will be assigne
 
 The first entries of customer_data.csv were "delivered", and not present in "In Inventory" so when "Assign Inventory" is clicked, the boards are likewise removed from the "In Inventory" column.
 
-Orders which require both DUT and DUT-DB are not partially fulfilled until both are "In Inventory". To make sure these double-board orders get filled, single-board orders are not processed unless the two orders have the same delivery date.
+Orders which require both DUT and DUT-DB are not partially fulfilled until both are "In Inventory".
 
 No special considerations were made to favor "In Progress" assemblies, as there were no directions to do so in the challenge.
+
+### STEP 5: When do we run out of stock ?
+
+Cannot fulfill order 231 as we lack an engineering model daughterboard. In fact EM daughterboards seem to be the upcoming bottleneck; assembly 231 and all orders due on 9/13.
 
 ###### sidenote
 
