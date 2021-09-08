@@ -1,0 +1,15 @@
+<h1>Customer orders</h1>
+<table>
+    <tr>
+    {% for header in customer_headers %}
+        <th class="colspace">{{header}}</th>
+    {% endfor %}
+    </tr>
+    {% for data in customer_data %}
+    <tr>
+        {% for header in customer_headers %}
+            <td class="colspace">{{data[header]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

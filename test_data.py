@@ -38,7 +38,7 @@ def read_column_values(columnTitle):
     return columnValues
 
 
-def get_all():
+def get_all_test_data():
     with open(_DATA_PATH, newline='') as csvfile:
         return list(csv.DictReader(csvfile))
 

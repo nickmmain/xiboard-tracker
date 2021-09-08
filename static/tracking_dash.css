@@ -33,8 +33,12 @@ p.ticket{
 li.card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: left;
-    background-color: #0548a0;
+    background-color: #80a8dc;
     padding-left: 6px;
+}
+
+.colspace{
+    padding:0 15px 0 15px;
 }
 
 @font-face {

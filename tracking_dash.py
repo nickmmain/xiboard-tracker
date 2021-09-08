@@ -1,13 +1,16 @@
 import os
 import json
 from flask import Flask, app, render_template, url_for, request, redirect
-from test_data import initialize_versions, initialize_configs, initialize_trackers, get_all, move_ticket, new_ticket
+from test_data import initialize_versions, initialize_configs, initialize_trackers, get_all_test_data, move_ticket, new_ticket
+from customer_data import get_all_customer_data
 from glob import glob
 
 
 app = Flask(__name__)
 _STATES = ['New', 'Testing: Inspection', 'Testing: HW Tests',
            'Testing: Automated Functional', 'Testing: Thermal Tests', 'In Inventory']
+_CUSTOMER_DISPLAY_HEADERS = ['Assembly #',
+                             'Status', 'Delivery Date', 'Desired Units', 'Unit Config', 'DUT SN', 'DUT-DB SN']
 _SUBMISSION_ERROR = ''
 
 
@@ -17,8 +20,11 @@ def welcome():
     _CONFIGS = initialize_configs()
     _TRACKERS = initialize_trackers()
 
-    test_data = get_all()
-    return render_template('dash.html', test_data=test_data, states=_STATES, versions=_VERSIONS, configs=_CONFIGS, trackers=_TRACKERS, sub_error=_SUBMISSION_ERROR)
+    test_data = get_all_test_data()
+    customer_data = get_all_customer_data()
+    return render_template('dash.html', test_data=test_data, states=_STATES, versions=_VERSIONS,
+                           configs=_CONFIGS, trackers=_TRACKERS, sub_error=_SUBMISSION_ERROR, customer_data=customer_data,
+                           customer_headers=_CUSTOMER_DISPLAY_HEADERS)
 
 
 @app.route('/data', methods=['PUT', 'POST'])
@@ -31,16 +37,22 @@ def test_data():
         try:
             new_ticket(request.form['assignee'], request.form['serial'],
                        request.form['version'], request.form['board'], request.form['config'])
-            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
         except ValueError as error:
             global _SUBMISSION_ERROR
             _SUBMISSION_ERROR = error.args[0]
             return redirect(url_for('welcome'))
+        clear_error()
+        return redirect(url_for('welcome'))
 
 
 @ app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
+
+
+def clear_error():
+    global _SUBMISSION_ERROR
+    _SUBMISSION_ERROR = ''
 
 
 def dated_url_for(endpoint, **values):
