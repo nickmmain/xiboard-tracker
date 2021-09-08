@@ -9,8 +9,8 @@ from glob import glob
 app = Flask(__name__)
 _STATES = ['New', 'Testing: Inspection', 'Testing: HW Tests',
            'Testing: Automated Functional', 'Testing: Thermal Tests', 'In Inventory']
-_CUSTOMER_DISPLAY_HEADERS = ['Assembly #',
-                             'Status', 'Delivery Date', 'Desired Units', 'Unit Config', 'DUT SN', 'DUT-DB SN']
+_CUSTOMER_DISPLAY_HEADERS = ['Assembly #', 'Status', 'Delivery Date',
+                             'Desired Units', 'Unit Config', 'DUT SN', 'DUT-DB SN']
 _SUBMISSION_ERROR = ''
 
 
@@ -49,33 +49,39 @@ def test_data():
 def assign_inventory():
     orders = get_all_customer_data()
     for order in orders:
+        # if the order does not already have units assigned.
         if(not(order['DUT SN'] or order['DUT-DB SN'])):
             inventory = get_inventory()
+            # a double-board order
             if(',' in order['Desired Units']):
-                dut = next(
-                    (x for x in inventory if x['Tracker'] == 'DUT' and order['Unit Config'] in x['Board Config']), None)
-                dut_db = next(
-                    (x for x in inventory if x['Tracker'] == 'DUT-Daughterboard' and order['Unit Config'] in x['Board Config']), None)
+                dut = filter_inventory(
+                    inventory, 'DUT', order['Unit Config'])
+                dut_db = filter_inventory(
+                    inventory, 'DUT-Daughterboard', order['Unit Config'])
                 if(dut is not None and dut_db is not None):
                     assign_boards(
                         order['Assembly #'], dut['Serial Number'], dut_db['Serial Number'])
                     remove_ticket_by_serial(dut['Serial Number'])
                     remove_ticket_by_serial(dut_db['Serial Number'])
             elif('DUT-DB' in order['Desired Units']):
-                dut_db = next(
-                    (x for x in inventory if x['Tracker'] == 'DUT-Daughterboard' and order['Unit Config'] in x['Board Config']), None)
+                dut_db = filter_inventory(
+                    inventory, 'DUT-Daughterboard', order['Unit Config'])
                 if(dut_db is not None):
                     assign_boards(
                         order['Assembly #'], None,  dut_db['Serial Number'])
                     remove_ticket_by_serial(dut_db['Serial Number'])
             else:
-                dut = next(
-                    (x for x in inventory if x['Tracker'] == 'DUT' and order['Unit Config'] in x['Board Config']), None)
+                dut = filter_inventory(
+                    inventory, 'DUT', order['Unit Config'])
                 if(dut is not None):
                     assign_boards(
                         order['Assembly #'], dut,  None)
                     remove_ticket_by_serial(dut['Serial Number'])
     return redirect(url_for('welcome'))
+
+
+def filter_inventory(inventory, tracker, config):
+    return next((x for x in inventory if x['Tracker'] == tracker and config in x['Board Config']), None)
 
 
 @ app.context_processor

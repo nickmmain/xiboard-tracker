@@ -20,11 +20,26 @@ _FIELDS = [_ASSEMBLY_NO, _ASSEMBLY_NAME, _STATUS,
            _NAME, _UNITS, _CONFIG, _DATE, _DUT, _DUT_DB]
 
 
-def get_all_customer_data():
+def get_all_customer_data(grouped_by_date=False):
     with open(_DATA_PATH, newline='', encoding='utf-8-sig') as csvfile:
         customer_data = list(csv.DictReader(csvfile))
         customer_data.sort(key=bydate)
+        if(grouped_by_date):
+            return group_by_date(customer_data)
         return customer_data
+
+
+def group_by_date(orders_list):
+    date = ''
+    grouped_orders = {}
+    for order in orders_list:
+        if(order[_DATE] == date):
+            grouped_orders[date].append(order)
+        else:
+            date = order[_DATE]
+            grouped_orders[date] = []
+            grouped_orders[date].append(order)
+    return grouped_orders
 
 
 def bydate(row):
