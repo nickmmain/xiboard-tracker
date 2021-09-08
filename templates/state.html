@@ -1,5 +1,5 @@
-<div>
-    <div id={{state.replace(" ", "_")}} class="column" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)" ondragleave="dragleaveHandler(event)" ondragend="dragendHandler(event)">
+<div ondragover="dragoverHandler(event)" ondrop="dropHandler(event)" ondragleave="dragleaveHandler(event)" ondragend="dragendHandler(event)">
+    <div id={{state.replace(" ", "_")}} class="column">
         <div class="column-header">
             <span class="column-title">{{state}}</span>
         </div>

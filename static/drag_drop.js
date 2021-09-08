@@ -8,17 +8,19 @@ var dragstartHandler = function(event, data){
 
 var dragoverHandler = function(event){
     event.preventDefault();
-    if(event.target.classList.contains('column'))
+    var columnEls = event.target.getElementsByClassName('column');
+    if(columnEls.length>0)
     {
-        $(event.target).css('background-color','#F00');
+        $(columnEls[0]).css('background-color','#F00');
     }
 };
 
 var dragleaveHandler = function(event){
     event.preventDefault();
-    if(event.target.classList.contains('column'))
+    var columnEls = event.target.getElementsByClassName('column');
+    if(columnEls.length>0)
     {
-        $(event.target).css('background-color','grey');
+        $(columnEls[0]).css('background-color','grey');
     }
 };
 
@@ -34,9 +36,10 @@ var dragendHandler = function(event){
 
 var dropHandler = function(event){
     event.preventDefault();
-    if(event.target.classList.contains('column'))
+    var columnEls = event.target.getElementsByClassName('column');
+    if(columnEls.length>0)
     {
-        var targetColumn = event.target.id.replaceAll("_", " ");
+        var targetColumn = columnEls[0].id.replaceAll("_", " ");
 
         if(targetColumn!=startColumn)
         {
