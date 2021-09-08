@@ -4,7 +4,7 @@ A web page for tracking the testing state of Xiphos products and assigning them 
 
 ### Running the application
 
-1. Download the file
+1. Download the folder
 2. Navigate to the directory of the folder using the command line
 3. Type and enter: "set FLASK_APP=tracking_dash"
 4. Type and enter: "flask run"
